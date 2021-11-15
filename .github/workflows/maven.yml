@@ -51,6 +51,7 @@ jobs:
     environment: 'prod'
     needs: [build, dependencyCheck]
     steps:
+      - uses: actions/checkout@v2
       # Download published artifact
       - name: deploy production
       - run: echo deploy success !!!
