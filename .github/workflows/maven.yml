@@ -85,12 +85,18 @@ jobs:
           with:
             sarif_file: 'trivy-results.sarif'
             
-        - name: build image
-          uses: whoan/docker-build-with-cache-action@v5
+        - name: Run Trivy vulnerability scanner with GitHub Issue
+          uses: lazy-actions/gitrivy@v3
           with:
-            username: piii
-            password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
-            image_name: java-hello-world
+            token: ${{ secrets.GITHUB_TOKEN }}
+            image: 'docker.io/piii/java-hello-world:${{ github.sha }}'
+            
+#         - name: build image
+#           uses: whoan/docker-build-with-cache-action@v5
+#           with:
+#             username: piii
+#             password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+#             image_name: java-hello-world
             
   
 
