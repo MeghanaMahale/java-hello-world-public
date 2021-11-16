@@ -10,7 +10,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  buildapp:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -66,12 +66,28 @@ jobs:
           with:
             name: published-app
             path: './target'
-        - name: build image
-          uses: whoan/docker-build-with-cache-action@v5
+        - name: Build an image from Dockerfile
+          run: docker build -t docker.io/piii/java-hello-world:${{ github.sha }} .
+        - name: Run Trivy vulnerability scanner
+          uses: aquasecurity/trivy-action@master
           with:
-            username: piii
-            password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
-            image_name: java-hello-world
+            image-ref: 'docker.io/piii/java-hello-world:${{ github.sha }}'
+            format: 'template'
+            template: '@/contrib/sarif.tpl'
+            output: 'trivy-results.sarif'
+
+        - name: Upload Trivy scan results to GitHub Security tab
+          uses: github/codeql-action/upload-sarif@v1
+          with:
+            sarif_file: 'trivy-results.sarif'
+#         - name: build image
+#           uses: whoan/docker-build-with-cache-action@v5
+#           with:
+#             username: piii
+#             password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+#             image_name: java-hello-world
+            
+  
 
 #   deploy-prod:
 #     # The type of runner that the job will run on
