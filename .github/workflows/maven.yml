@@ -29,38 +29,38 @@ jobs:
         name: published-app
         path: './target'
 
-  dependencyCheck:
-    runs-on: ubuntu-latest
-    needs: buildapp
-    name: depecheck_test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build project with Maven
-        run: mvn clean install
-      - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@main
-        id: Depcheck
-        with:
-          project: 'test'
-          path: '.'
-          format: 'SARIF'    
-          args: >
-            --failOnCVSS 7
-            --enableRetired
-      - name: Upload SAST scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-            sarif_file: '*.sarif'
-      - name: Upload Test results
-        uses: actions/upload-artifact@master
-        with:
-           name: Depcheck report
-           path: ${{github.workspace}}/reports
+#   dependencyCheck:
+#     runs-on: ubuntu-latest
+#     needs: buildapp
+#     name: depecheck_test
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#       - name: Build project with Maven
+#         run: mvn clean install
+#       - name: Depcheck
+#         uses: dependency-check/Dependency-Check_Action@main
+#         id: Depcheck
+#         with:
+#           project: 'test'
+#           path: '.'
+#           format: 'SARIF'    
+#           args: >
+#             --failOnCVSS 7
+#             --enableRetired
+#       - name: Upload SAST scan results to GitHub Security tab
+#         uses: github/codeql-action/upload-sarif@v1
+#         with:
+#             sarif_file: '*.sarif'
+#       - name: Upload Test results
+#         uses: actions/upload-artifact@master
+#         with:
+#            name: Depcheck report
+#            path: ${{github.workspace}}/reports
            
   build-and-push-image:
       runs-on: ubuntu-latest
-      needs: [buildapp,dependencyCheck]
+      needs: [buildapp]
       steps:
         - name: Checkout
           uses: actions/checkout@v2
