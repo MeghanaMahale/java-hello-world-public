@@ -93,27 +93,27 @@ jobs:
             
   
 
-#   deploy-prod:
-#     # The type of runner that the job will run on
-#     runs-on: ubuntu-latest
-#     environment: 'prod'
-#     needs: [build, dependencyCheck,build-and-push-image]
+  deploy-prod:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: 'prod'
+    needs: [buildapp, build-and-push-image]
 
-#     # Steps represent a sequence of tasks that will be executed as part of the job
-#     steps:
-#       # Download published artifact
-#       - name: Download artifact
-#         uses: actions/download-artifact@v2
-#         with:
-#           name: published-app
-#           path: './target'
-#       # Deploy
-#       - name: Deploy to Production
-#         run: echo "Hello $FIRST_NAME $middle_name $Last_Name,  Deploy Success !!!"
-#         env:
-#           FIRST_NAME: Mona
-#           middle_name: The
-#           Last_Name: Octocat
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Download published artifact
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: published-app
+          path: './target'
+      # Deploy
+      - name: Deploy to Production
+        run: echo "Hello $FIRST_NAME $middle_name $Last_Name,  Deploy Success !!!"
+        env:
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat
       
 
   
