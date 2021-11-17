@@ -32,11 +32,12 @@ jobs:
           token: ${{ github.token }}
           title: Action workflow failed.
           body: |
-            ### Context
+            ### Action workflow failed. 
             [Failed Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
             [Codebase](https://github.com/${{ github.repository }}/tree/${{ github.sha }})
             Workflow name - `${{ github.workflow }}`
             Job -           `${{ github.job }}`
             status -        `${{ job.status }}`
           assignees: pisineen
+          labels: workflow
 
