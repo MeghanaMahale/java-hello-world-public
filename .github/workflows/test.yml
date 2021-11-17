@@ -17,5 +17,7 @@ jobs:
     runs-on: Linux
     steps:
       - run: |
+          whoami
+          pwd
           echo "Hello ${{ github.event.inputs.name }}!"
           echo "- in ${{ github.event.inputs.home }}!"
