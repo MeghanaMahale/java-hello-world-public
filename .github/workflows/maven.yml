@@ -11,6 +11,7 @@ on:
 
 jobs:
   buildapp:
+    #
     #runs-on: ubuntu-latest
     runs-on: Linux
     steps:
@@ -29,6 +30,10 @@ jobs:
       with:
         name: published-app
         path: './target'
+    - name: Test 
+      run: |
+        whoami
+        env
 
 #   dependencyCheck:
 #     runs-on: ubuntu-latest
