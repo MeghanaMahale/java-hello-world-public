@@ -32,22 +32,22 @@ jobs:
           pwd
           echo "Hello ${{ github.event.inputs.name }}!"
           echo "- in ${{ github.event.inputs.home }}!"
-      - name: notification to slack
-        id: notify
-        uses: act10ns/slack@v1
-        with:
-          status: ${{ job.status }}
-          steps: ${{ toJson(steps) }}
-          channel: '#github-action'
-          config: .github/config/slack.yml
-        if: always()
+#       - name: notification to slack
+#         id: notify
+#         uses: act10ns/slack@v1
+#         with:
+#           status: ${{ job.status }}
+#           steps: ${{ toJson(steps) }}
+#           channel: '#github-action'
+#           config: .github/config/slack.yml
+#         if: always()
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
           # Required mail server address:
           server_address: smtp.gmail.com
           # Required mail server port:
-          server_port: 587
+          server_port: 465
           # Optional (recommended): mail server username:
           username: ${{secrets.MAIL_USERNAME}}
           # Optional (recommended) mail server password:
