@@ -102,8 +102,6 @@ jobs:
 #             username: piii
 #             password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
 #             image_name: java-hello-world
-            
-  
 
   deploy-prod:
     # The type of runner that the job will run on
