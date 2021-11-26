@@ -23,6 +23,7 @@ jobs:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.inputs.tag }}
@@ -32,6 +33,7 @@ jobs:
           echo "Hello ${{ github.event.inputs.name }}!"
           echo "- in ${{ github.event.inputs.home }}!"
       - name: notification to slack
+        id: notify
         uses: act10ns/slack@v1
         with:
           status: ${{ job.status }}
