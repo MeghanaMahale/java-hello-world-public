@@ -38,7 +38,7 @@ jobs:
         with:
           status: ${{ job.status }}
           steps: ${{ toJson(steps) }}
-          channel: '@GitHub'
+          channel: '#github-action'
           config: .github/config/slack.yml
         if: always()
 #       - name: Send mail
