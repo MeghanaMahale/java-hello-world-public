@@ -63,12 +63,12 @@ jobs:
         name: scannerwork
         path: './.scannerwork/report-task.txt'
     - name: SonarQube Quality Gate check
-      run: cat .scannerwork/report-task.txt
-#       uses: sonarsource/sonarqube-quality-gate-action@master
-#       # Force to fail step after specific time
-#       timeout-minutes: 5
-#       env:
-#        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#       run: cat .scannerwork/report-task.txt
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      # Force to fail step after specific time
+      timeout-minutes: 5
+      env:
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
        
 #   dependencyCheck:
 #     runs-on: ubuntu-latest
