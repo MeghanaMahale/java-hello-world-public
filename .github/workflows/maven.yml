@@ -56,14 +56,7 @@ jobs:
             -Dsonar.projectKey=java-hello-world-public
             -Dsonar.projectVersion=0.0.0
             -Dsonar.java.binaries=**/*
-    - name: Test
-      run: env
     - name: SonarQube Quality Gate check
-#       run: |
-#        chmod +x ./check-quality-gate.sh
-#        ./check-quality-gate.sh .scannerwork/report-task.txt
-#       env:
-#        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       uses: pisineen/sonarqube-scan-action@main
       # Force to fail step after specific time
       timeout-minutes: 5
