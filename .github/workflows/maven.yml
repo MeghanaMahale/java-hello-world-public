@@ -56,12 +56,18 @@ jobs:
             -Dsonar.projectKey=java-hello-world-public
             -Dsonar.projectVersion=0.0.0
             -Dsonar.java.binaries=**/*
-    - name: SonarQube Quality Gate check
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      # Force to fail step after specific time
-      timeout-minutes: 5
-      env:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    # Publish artifact
+    - name: Publish artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: scannerwork
+        path: './.scannerwork/report-task.txt'
+#     - name: SonarQube Quality Gate check
+#       uses: sonarsource/sonarqube-quality-gate-action@master
+#       # Force to fail step after specific time
+#       timeout-minutes: 5
+#       env:
+#        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
        
 #   dependencyCheck:
 #     runs-on: ubuntu-latest
