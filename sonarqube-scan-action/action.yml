@@ -7,7 +7,9 @@ branding:
 runs:
   using: "composite"
   steps:
-    - run: ./sonarqube-scan-action/script/check-quality-gate.sh ${{ inputs.scanMetadataReportFile  }}
+    - run: |
+      chmod +x ./sonarqube-scan-action/script/check-quality-gate.sh
+      ./sonarqube-scan-action/script/check-quality-gate.sh ${{ inputs.scanMetadataReportFile  }}
       shell: bash
 inputs:
   scanMetadataReportFile:
