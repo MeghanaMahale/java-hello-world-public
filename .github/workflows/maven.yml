@@ -45,9 +45,6 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: SonarQube Scan
-#       run: |
-#        curl --silent --fail --show-error --user "bad974ab6df9dda0369b4e221f65400c95b56078": "https://sonarqube.thaidevops.com/api/qualitygates/project_status?analysisId=AX1_EqKNS5HjSiwkrizk" | jq -r '.projectStatus.status'
-
       uses: sonarsource/sonarqube-scan-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -59,23 +56,17 @@ jobs:
             -Dsonar.projectKey=java-hello-world-public
             -Dsonar.projectVersion=0.0.0
             -Dsonar.java.binaries=**/*
-    # Publish artifact
-    - name: Publish artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: scannerwork
-        path: './.scannerwork/report-task.txt'
     - name: SonarQube Quality Gate check
-      run: |
-       chmod +x ./check-quality-gate.sh
-       ./check-quality-gate.sh .scannerwork/report-task.txt
-      env:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#       uses: sonarsource/sonarqube-quality-gate-action@master
-#       # Force to fail step after specific time
-#       timeout-minutes: 5
+#       run: |
+#        chmod +x ./check-quality-gate.sh
+#        ./check-quality-gate.sh .scannerwork/report-task.txt
 #       env:
 #        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      uses: ./sonarqube-scan-action@main
+      # Force to fail step after specific time
+      timeout-minutes: 5
+      env:
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
        
 #   dependencyCheck:
 #     runs-on: ubuntu-latest
