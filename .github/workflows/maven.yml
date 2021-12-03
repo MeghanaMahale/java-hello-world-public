@@ -56,6 +56,8 @@ jobs:
             -Dsonar.projectKey=java-hello-world-public
             -Dsonar.projectVersion=0.0.0
             -Dsonar.java.binaries=**/*
+    - name: Test
+      run: echo ${{ github.action_path }}
     - name: SonarQube Quality Gate check
 #       run: |
 #        chmod +x ./check-quality-gate.sh
