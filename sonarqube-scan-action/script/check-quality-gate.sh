@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #source "$(dirname "$0")/common.sh"
-source "./common.sh"
+source "./sonarqube-scan-action/script/common.sh"
 
 if [[ -z "${SONAR_TOKEN}" ]]; then
   echo "Set the SONAR_TOKEN env variable."
