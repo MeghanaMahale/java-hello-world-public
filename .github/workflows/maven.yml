@@ -46,15 +46,15 @@ jobs:
         fetch-depth: 0
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       with:
         projectBaseDir: .
         args: >
             -Dsonar.projectName=java-hello-world-public
             -Dsonar.projectKey=java-hello-world-public
             -Dsonar.projectVersion=0.0.0
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
 #   dependencyCheck:
 #     runs-on: ubuntu-latest
