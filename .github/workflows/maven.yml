@@ -55,7 +55,7 @@ jobs:
             -Dsonar.projectName=java-hello-world-public
             -Dsonar.projectKey=java-hello-world-public
             -Dsonar.projectVersion=0.0.0
-
+            -Dsonar.java.binaries=**/*
 #   dependencyCheck:
 #     runs-on: ubuntu-latest
 #     needs: buildapp
