@@ -38,6 +38,7 @@ jobs:
         
   sonarqube:
     runs-on: ubuntu-latest
+    needs: buildapp
     steps:
     - uses: actions/checkout@v2
       with:
