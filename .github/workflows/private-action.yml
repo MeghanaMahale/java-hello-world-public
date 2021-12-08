@@ -21,7 +21,7 @@ jobs:
     steps:
     # To use this repository's private action,
     # you must check out the repository
-    - name: Clone PRIVATE repository
+    - name: Clone private repository
       uses: GuillaumeFalourd/clone-github-repo-action@v1
       with:
         owner: 'pisineen'
@@ -30,11 +30,11 @@ jobs:
     - name: Validation
       run: |
         ls -lR ./private-github-action
-#     - name: Hello world action step
-#       uses: ./private-github-action # Uses an action in the root directory
-#       id: hello
-#       with:
-#         who-to-greet: 'Mona the Octocat'
-#     # Use the output from the `hello` step
+    - name: Hello world action step
+      uses: ./private-github-action # Uses an action in the root directory
+      id: hello
+      with:
+        who-to-greet: 'piiiii'
+    # Use the output from the `hello` step
     - name: Get the output time
       run: echo "The time was ${{ steps.hello.outputs.time }}"
