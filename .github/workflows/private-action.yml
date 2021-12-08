@@ -26,7 +26,7 @@ jobs:
       with:
         owner: 'pisineen'
         repository: 'private-github-action'
-        access-token: ${{ github.token }}
+        access-token: ${{ secrets.ACCESS_TOKEN }}
     - name: Validation
       run: |
         ls -lR ./private-github-action
