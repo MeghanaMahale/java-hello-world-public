@@ -33,8 +33,7 @@ jobs:
         path: './target'
     - name: Test 
       run: |
-        whoami
-        env
+        jq --version
         
   sonarqube:
     runs-on: Linux
