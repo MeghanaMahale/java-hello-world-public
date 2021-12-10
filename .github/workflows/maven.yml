@@ -12,8 +12,8 @@ on:
 
 jobs:
   buildapp:
-    runs-on: ubuntu-latest
-    #runs-on: Linux
+    #runs-on: ubuntu-latest
+    runs-on: Linux
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -37,7 +37,8 @@ jobs:
         env
         
   sonarqube:
-    runs-on: ubuntu-latest
+    runs-on: Linux
+#     runs-on: ubuntu-latest
     needs: buildapp
     steps:
     - uses: actions/checkout@v2
