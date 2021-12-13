@@ -34,6 +34,7 @@ jobs:
     - name: Test 
       run: |
         jq --version
+        curl
         
   sonarqube:
     #runs-on: Linux
