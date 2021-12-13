@@ -56,12 +56,12 @@ jobs:
             -Dsonar.projectKey=java-hello-world-public
             -Dsonar.projectVersion=0.0.0
             -Dsonar.java.binaries=**/*
-    # Publish artifact
-    - name: Publish artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: scannerwork
-        path: './.scannerwork/report-task.txt'
+#     #Publish artifact
+#     - name: Publish artifact
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: scannerwork
+#         path: './.scannerwork/report-task.txt'
     - name: SonarQube Quality Gate check
       uses: pisineen/sonarqube-scan-action@main
       # Force to fail step after specific time
