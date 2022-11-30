@@ -13,18 +13,6 @@
            <maven.compiler.source>1.6</maven.compiler.source>
            <maven.compiler.target>1.6</maven.compiler.target>
      </properties>
-    <distributionManagement>
-    <repository>
-        <id>deployment</id>
-        <name>Releases</name>
-        <url>http://52.66.82.175:8081/repository/minutus-release/</url>
-    </repository>
-    <snapshotRepository>
-        <id>deployment</id>
-        <name>nexus</name>
-        <url>http://52.66.82.175:8081/repository/minutus-snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
 
       <dependencies>
            <dependency>
@@ -60,4 +48,16 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+    <repository>
+        <id>deployment</id>
+        <name>Releases</name>
+        <url>http://52.66.82.175:8081/repository/minutus-release/</url>
+    </repository>
+    <snapshotRepository>
+        <id>deployment</id>
+        <name>nexus</name>
+        <url>http://52.66.82.175:8081/repository/minutus-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
