@@ -15,12 +15,12 @@
      </properties>
     <distributionManagement>
     <repository>
-        <id>nexus</id>
+        <id>deployment</id>
         <name>Releases</name>
         <url>http://52.66.82.175:8081/repository/minutus-release/</url>
     </repository>
     <snapshotRepository>
-        <id>nexus-snapshots</id>
+        <id>deployment</id>
         <name>nexus</name>
         <url>http://52.66.82.175:8081/repository/minutus-snapshots/</url>
     </snapshotRepository>
