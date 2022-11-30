@@ -50,7 +50,7 @@
     </build>
     <distributionManagement>
     <repository>
-        <id>deployment</id>
+        <id>nexus</id>
         <name>Releases</name>
         <url>http://52.66.82.175:8081/repository/minutus-release/</url>
     </repository>
